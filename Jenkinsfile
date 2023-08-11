@@ -35,11 +35,5 @@ pipeline {
             }
         }
     }
+}
 
-    post {
-        always {
-            // Cleanup or notification tasks
-        }
-    }
-}
-}
