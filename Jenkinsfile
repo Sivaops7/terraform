@@ -10,7 +10,7 @@ pipeline {
 
         stage('Terraform Provisioning') {
             steps {
-                dir('terraform') {
+                
                     script {
                         def terraformCommand = 'terraform'
                         
@@ -19,7 +19,7 @@ pipeline {
                         sh "${terraformCommand} init"
                         sh "${terraformCommand} apply -auto-approve"
                     }
-                }
+                
             }
         }
 
