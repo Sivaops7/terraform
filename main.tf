@@ -114,7 +114,7 @@ resource "aws_security_group" "allow_all" {
 resource "aws_network_interface" "web-server-nic" {
   subnet_id       = aws_subnet.pubsub.id //paste from subnet
   private_ips     = ["10.0.1.50"]
-  security_groups = aws_security_group.allow_all.id  //copy from security group above
+  security_groups = teaws_security_group.allow_all.id  //copy from security group above
  
 }
 //8.assign an elastic ip to network interface created in step 7

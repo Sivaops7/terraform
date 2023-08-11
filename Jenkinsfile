@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('Checkout') {
             steps {
@@ -10,7 +10,10 @@ pipeline {
 
         stage('Terraform Provisioning') {
             steps {
-                dir('terraform') {
+		 withCredentials([
+                    string(credentialsId: 'your-aws-access-key-id-credential-id', variable: 'AWS_ACCESS_KEY_ID'),
+                    string(credentialsId: 'your-aws-secret-access-key-credential-id', variable: 'AWS_SECRET_ACCESS_KEY')
+                ]){
                     script {
                         def terraformCommand = 'terraform'
 
