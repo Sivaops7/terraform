@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('Access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('Secret-access-key')
+    }
+
 
     stages {
         stage('Checkout') {
@@ -10,7 +15,7 @@ pipeline {
 
         stage('Terraform Provisioning') {
             steps {
-                
+                 withEnv(["AWS_ACCESS_KEY_ID=${Access-key}", "AWS_SECRET_ACCESS_KEY=${Secret-access-key}"]) {
                     script {
                         def terraformCommand = 'terraform'
                         
@@ -19,7 +24,7 @@ pipeline {
                         sh "${terraformCommand} init"
                         sh "${terraformCommand} apply -auto-approve"
                     }
-                
+                 }
             }
         }
 
