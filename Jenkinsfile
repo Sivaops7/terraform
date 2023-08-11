@@ -31,14 +31,14 @@ pipeline {
 
         stage('Ansible Configuration') {
             steps {
-                dir('ansible') {
+                
                     script {
                         def ansibleCommand = 'ansible-playbook'
 
                         // Dynamic Inventory Script
                         sh "${ansibleCommand} -i ../terraform_inventory.py playbook.yml"
                     }
-                }
+                
             }
         }
     }
