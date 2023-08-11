@@ -15,7 +15,8 @@ pipeline {
 
         stage('Terraform Provisioning') {
             steps {
-                 withEnv(["AWS_ACCESS_KEY_ID=${Access-key}", "AWS_SECRET_ACCESS_KEY=${Secret-access-key}"]) {
+                withEnv(["AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"]) {
+
                     script {
                         def terraformCommand = 'terraform'
                         
