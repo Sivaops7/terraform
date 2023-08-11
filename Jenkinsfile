@@ -13,7 +13,7 @@ pipeline {
                 dir('terraform') {
                     script {
                         def terraformCommand = 'terraform'
-                        sh 'cd terraform'
+                        
 
                         // Terraform initialization and apply
                         sh "${terraformCommand} init"
